@@ -1,0 +1,31 @@
+/* canvas { border: 5px solid red; } */
+#background { border: 3px solid black; position: relative; z-index: -10; }
+
+#crossingPic { border: 2px solid blue; position: relative; z-index: -9; }
+
+#auto1
+
+#auto4
+
+
+#main{
+	position: relative;
+	width : 1280px;
+	height : 960px;
+}
+#pozadi{
+	position: absolute;
+	top:0;
+	left:0;
+}
+#1 {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+ }
+
+#container{
+    position: relative;
+    width: 200px;
+    height: 200px;
+}

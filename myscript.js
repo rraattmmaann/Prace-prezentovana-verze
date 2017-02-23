@@ -3,23 +3,28 @@
 
 function Tjunction(){				//funkce pro jednotlivé křižovatky
   alert("křižovatka typu T");		// pravděpodobně zde budou další 
-	draw();								//switche, které budou odkazovat
+	//draw();								//switche, které budou odkazovat
 									//na specifické případy
 }
 
-function TjunctionSide(){
+function TjunctionSideA(){
   alert("Křižovatka typu T z boku");
-  draw();	
+  //draw();	
 }
 
 function Xjunction(){
   alert("Křižovatka typu X");
-  draw();	
+  //draw();	
 }
 
 function roundabout(){
   alert("Kruhový objezd");
-  draw();
+  //draw();
+}
+function TjunctionSIdeB(){
+	alert("Křižovatka typu T z boku druhého");
+	//draw();	
+}
   /*		var a = 0;
 		var positions = [];
   for(i = 0; i < 2; i++){
@@ -29,7 +34,7 @@ function roundabout(){
 		
 		else
 	*/		
-}
+/*
 function draw(){
 		 var canvas = document.getElementById("background");
 		 var ctx = canvas.getContext("2d");
@@ -38,7 +43,7 @@ function draw(){
         }
       
 		//vykreslí pozadí a auto (auta)
-
+*/
  var blem = choice();
 function choice(){
       var choice = junctionChoice();
@@ -46,6 +51,7 @@ function choice(){
 function junctionChoice(choice){     //výběr jednotlivého typu křižovatky
 	var choice = 0;
 	choice = Math.floor(Math.random() * 4) + 1;
+	choice = 4; 					//POZOR!! kurvitko za účelem testování umístění vozidel na kruháku
 	return choice;
 }
 /* alert(choice); */
@@ -54,14 +60,17 @@ switch(choice){
     Tjunction();
     break;
   case 2:
-    TjunctionSide();
-    break;
+    TjunctionSideA();
+    break;	
   case 3:
     Xjunction();
     break;
   case 4:
     roundabout();
-    break;    
+    break;  
+  case 5:
+	TjunctionSIdeB();
+	break;
 }
  
 }

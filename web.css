@@ -4,48 +4,50 @@
   border: 1px solid blue; padding-top: 0.3em; color: #F00;
   text-align : center;
 }
-/* canvas { border: 5px solid red; } */
-#background { border: 3px solid black; position: relative; z-index: -10; }
 
-#crossingPic { border: 2px solid blue; position: relative; z-index: -9; }
-
-#auto1
-
-#auto4
-
-
-#main{
-	position: relative;
-	width : 1280px;
-	height : 960px;
-}
-#pozadi{
-	position: absolute;
-	top:0;
-	left:0;
-}
-#1 {
-	position: absolute;
-	height: 100%;
-	width: 100%;
- }
-
-#container{
-    position: relative;
-    width: 200px;
-    height: 200px;
-}
 #main_image{
-    width: 100%;
-    height: 100%;
+	position: relative;
+    width: 100px;
+    height: 100px;
     background: blue;
 }
 #overlay_image{
     position: absolute;
-    bottom: 10px;
+	left: 20px;
+    bottom: 100px;
     right: 10px;
     width: 30px;
     height: 30px;
     background: red;
 }
-*/
+#A{
+		position: absolute;
+		left: 500px;
+		top: 850px;
+		width: auto;
+		height: auto;
+}
+#B{
+		position: absolute;
+		left: 15px;
+		top: 630px;
+		width: auto;
+		height: auto;
+}
+#C{
+		position: absolute;
+		left: 15px;
+		top: 630px;
+		width: auto;
+		height: auto;
+		display: none;
+}
+#D{
+		position: absolute;
+		left: 15px;
+		top: 630px;
+		width: auto;
+		height: auto;
+		display: none;
+}
+
