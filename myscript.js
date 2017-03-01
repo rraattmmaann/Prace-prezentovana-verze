@@ -21,7 +21,7 @@ function roundabout(){
   alert("Kruhový objezd");
   //draw();
 }
-function TjunctionSIdeB(){
+function TjunctionSideB(){
 	alert("Křižovatka typu T z boku druhého");
 	//draw();	
 }
@@ -50,7 +50,7 @@ function choice(){
 
 function junctionChoice(choice){     //výběr jednotlivého typu křižovatky
 	var choice = 0;
-	choice = Math.floor(Math.random() * 4) + 1;
+	choice = Math.floor(Math.random() * 5) + 1;
 	choice = 4; 					//POZOR!! kurvitko za účelem testování umístění vozidel na kruháku
 	return choice;
 }
@@ -69,7 +69,7 @@ switch(choice){
     roundabout();
     break;  
   case 5:
-	TjunctionSIdeB();
+	TjunctionSideBdeB();
 	break;
 }
  
