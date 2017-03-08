@@ -3,74 +3,129 @@
 
 function Tjunction(){				//funkce pro jednotlivé křižovatky
   alert("křižovatka typu T");		// pravděpodobně zde budou další 
-	//draw();								//switche, které budou odkazovat
+									//switche, které budou odkazovat
 									//na specifické případy
 }
 
 function TjunctionSideA(){
   alert("Křižovatka typu T z boku");
-  //draw();	
+  	
 }
 
 function Xjunction(){
   alert("Křižovatka typu X");
-  //draw();	
+  	
 }
 
 function roundabout(){
   alert("Kruhový objezd");
-  //draw();
+  
 }
 function TjunctionSideB(){
 	alert("Křižovatka typu T z boku druhého");
-	//draw();	
-}
-  /*		var a = 0;
-		var positions = [];
-  for(i = 0; i < 2; i++){
-		a = Math.floor(Math.random() * 2) + 1;
-		if(a = 1)
-			//situace s nějakym autem - vymyslet
 		
-		else
-	*/		
-/*
-function draw(){
-		 var canvas = document.getElementById("background");
-		 var ctx = canvas.getContext("2d");
-		  ctx.fillStyle = 'rgb(200,0,0)'
-		  ctx.fillRect(10, 10, 55, 50);
-        }
-      
-		//vykreslí pozadí a auto (auta)
-*/
+}
  var blem = choice();
 function choice(){
       var choice = junctionChoice();
 
 function junctionChoice(choice){     //výběr jednotlivého typu křižovatky
 	var choice = 0;
-	choice = Math.floor(Math.random() * 5) + 1;
+	choice = Math.floor(Math.random() * 7) + 1;
 	choice = 4; 					//POZOR!! kurvitko za účelem testování umístění vozidel na kruháku
 	return choice;
 }
 /* alert(choice); */
 switch(choice){
   case 1:
-    Tjunction();
+    XjunctionFree();
     break;
   case 2:
-    TjunctionSideA();
+    XjunctionPreference();
     break;	
   case 3:
-    Xjunction();
+    TjunctionFree();
     break;
   case 4:
-    roundabout();
+    TjunctionPreference();
     break;  
   case 5:
-	TjunctionSideBdeB();
+	roundabout();
+	break;
+  case 6;
+	XjunctionPolice();
+	break;
+  case 7;
+	TjunctionPolice();
 	break;
 }
  
 }
+
+var t1 = [
+	[0,1,2],
+	[2,0,1],
+	[1,2,0],
+];
+
+ var t2 = [
+	[0,1,1],
+	[3,0,2],
+	[1,2,0],
+ ]
+
+ var t3 = [
+	[0,1,2],
+	[1,0,1],
+	[1,3,0],
+ ]
+ 
+ var x0 = [
+	[0,1,2,3], //pozn 3.
+	[3,0,1,2],
+	[2,3,0,1], //pozn. 1.
+	[1,2,4,0], //pozn. 3.
+]
+
+ var xpp1 = [
+	[0,3,4,4],
+	[3,0,2,3],
+	[2,2,0,1],
+	[1,1,1,0],
+]
+
+ var xp1 = [
+	[0,1,2,2],
+	[1,0,1,1],
+	[4,4,0,3],
+	[2,3,3,0],
+]
+
+ var xp2 = [
+	[0,1,1,1],
+	[4,0,3,4],
+	[3,3,0,2],
+	[1,2,2,0],
+]
+
+ var xp3 = [
+	[0,3,4,4],
+	[3,0,2,3],
+	[2,2,0,1],
+	[1,1,1,0],
+]
+ var xp4 = [
+	[0,2,3,3],
+	[2,0,1,2],
+	[1,1,0,1],
+	[3,4,4,0],
+]
+
+/*
+ var xp3 = [
+	[,,,],
+	[,,,],
+	[,,,],
+	[,,,],
+]
+*/
