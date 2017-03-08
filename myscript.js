@@ -1,67 +1,4 @@
 /* alert("Hello World!"); */
-
-
-function Tjunction(){				//funkce pro jednotlivé křižovatky
-  alert("křižovatka typu T");		// pravděpodobně zde budou další 
-									//switche, které budou odkazovat
-									//na specifické případy
-}
-
-function TjunctionSideA(){
-  alert("Křižovatka typu T z boku");
-  	
-}
-
-function Xjunction(){
-  alert("Křižovatka typu X");
-  	
-}
-
-function roundabout(){
-  alert("Kruhový objezd");
-  
-}
-function TjunctionSideB(){
-	alert("Křižovatka typu T z boku druhého");
-		
-}
- var blem = choice();
-function choice(){
-      var choice = junctionChoice();
-
-function junctionChoice(choice){     //výběr jednotlivého typu křižovatky
-	var choice = 0;
-	choice = Math.floor(Math.random() * 7) + 1;
-	choice = 4; 					//POZOR!! kurvitko za účelem testování umístění vozidel na kruháku
-	return choice;
-}
-/* alert(choice); */
-switch(choice){
-  case 1:
-    XjunctionFree();
-    break;
-  case 2:
-    XjunctionPreference();
-    break;	
-  case 3:
-    TjunctionFree();
-    break;
-  case 4:
-    TjunctionPreference();
-    break;  
-  case 5:
-	roundabout();
-	break;
-  case 6;
-	XjunctionPolice();
-	break;
-  case 7;
-	TjunctionPolice();
-	break;
-}
- 
-}
-
 var t1 = [
 	[0,1,2],
 	[2,0,1],
@@ -120,6 +57,101 @@ var t1 = [
 	[1,1,0,1],
 	[3,4,4,0],
 ]
+ var xt = [
+	[1,2,3,4],
+	[5,6,7,8],
+	[9,10,11,12],
+	[13,14,15,16],
+]
+
+function XjunctionFree(){				//funkce pro jednotlivé křižovatky
+  alert("křižovatka typu T");		// pravděpodobně zde budou další 
+									//switche, které budou odkazovat
+									//na specifické případy
+}
+
+function XjunctionPreference(){
+ // alert("Křižovatka typu X bez upravení přednosti v jízdě");
+	var a =Math.floor(Math.random() * 4);
+	var b =Math.floor(Math.random() * 4);
+	var c =Math.floor(Math.random() * 4);
+	var d =Math.floor(Math.random() * 4);
+	var A = x0[0][a];
+	var B = x0[1][b];
+	var C = x0[2][c];
+	var D = x0[3][d];
+	console.log(a, b, c, d);
+	console.log(A, B, C, D);
+	var order = [A, B, C, D];
+	console.log(order);
+	
+  }
+
+function TjunctionFree(){
+  alert("Křižovatka typu X");
+}
+
+function TjunctionPreference(){
+  alert("Kruhový objezd");  
+}
+
+function roundabout(){
+	alert("Křižovatka typu T z boku druhého");
+}
+
+function XjunctionPolice(){
+	alert("Křižovatka X řízená policistou");
+}
+
+function TjunctionPolice(){
+	alert("Křižovatka typu T řízená policistou");
+}
+
+function XjunctionLights(){
+	alert("křižovatka typu X řízená světelnou signalizací");
+}
+
+ var blem = choice();
+function choice(){
+      var choice = junctionChoice();
+
+function junctionChoice(choice){     //výběr jednotlivého typu křižovatky
+	var choice = 0;
+	choice = Math.floor(Math.random() * 8) + 1;
+	choice = 2; 					//POZOR!! kurvitko za účelem testování umístění vozidel na kruháku
+	return choice;
+}
+/* alert(choice); */
+switch(choice){
+  case 1:
+    XjunctionFree();
+    break;
+  case 2:
+    XjunctionPreference();
+    break;	
+  case 3:
+    TjunctionFree();
+    break;
+  case 4:
+    TjunctionPreference();
+    break;  
+  case 5:
+	roundabout();
+	break;
+  case 6:
+	XjunctionPolice();
+	break;
+  case 7:
+	TjunctionPolice();
+	break;
+  case 8:
+	XjunctionLights();
+	break;
+}
+ 
+}
+
+
 
 /*
  var xp3 = [
