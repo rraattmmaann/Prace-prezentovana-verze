@@ -57,12 +57,14 @@ var t1 = [
 	[1,1,0,1],
 	[3,4,4,0],
 ]
+ /*
  var xt = [
 	[1,2,3,4],
 	[5,6,7,8],
 	[9,10,11,12],
 	[13,14,15,16],
 ]
+*/
 
 function XjunctionFree(){				//funkce pro jednotlivé křižovatky
   alert("křižovatka typu T");		// pravděpodobně zde budou další 
@@ -72,9 +74,11 @@ function XjunctionFree(){				//funkce pro jednotlivé křižovatky
 
 function XjunctionPreference(){
  // alert("Křižovatka typu X bez upravení přednosti v jízdě");
-	var a =Math.floor(Math.random() * 4);
+ //a - sloupec v tabulce (směr, kam auto jede) 
+	var a =Math.floor(Math.random() * 4); 
 	var b =Math.floor(Math.random() * 4);
 	var c =Math.floor(Math.random() * 4);
+	var d =Math.floor(Math.random() * 4);
 	var d =Math.floor(Math.random() * 4);
 	var A = x0[0][a];
 	var B = x0[1][b];
@@ -84,8 +88,26 @@ function XjunctionPreference(){
 	console.log(A, B, C, D);
 	var order = [A, B, C, D];
 	console.log(order);
-	
+	drawX(A,B,C,D);
+/*	
+	var mapa = {qwe: a, asd: b, yxc: c, mnb: d};
+	console.log(mapa);
+	var sort = [];
+	for (var 
+*/	
   }
+function drawX(A, B, C, D){
+	var raz = {0:0, 1:1, 2:2, 2:3};
+	var dva = {3:4, 0:0, 1:5, 1:6};
+	var tri = {2:7, 4:8, 0:0, 3:9};
+	var ctyry =  {2:10, 3:11, 3:12, 0:0};
+	var v = raz.valueOf(A);
+	var x = dva.valueOf(B);
+	var y = tri.valueOf(C);
+	var z = ctyry.valueOf(D);
+	console.log(z);
+
+}
 
 function TjunctionFree(){
   alert("Křižovatka typu X");
