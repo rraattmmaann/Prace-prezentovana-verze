@@ -75,15 +75,40 @@ function XjunctionFree(){				//funkce pro jednotlivé křižovatky
 function XjunctionPreference(){
  // alert("Křižovatka typu X bez upravení přednosti v jízdě");
  //a - sloupec v tabulce (směr, kam auto jede) 
-	var a =Math.floor(Math.random() * 4); 
+	var a =Math.floor(Math.random() * 4);	//kam auto pojede 
 	var b =Math.floor(Math.random() * 4);
 	var c =Math.floor(Math.random() * 4);
 	var d =Math.floor(Math.random() * 4);
 	var d =Math.floor(Math.random() * 4);
-	var A = x0[0][a];
+	var A = x0[0][a];						//kolikátý pojede
 	var B = x0[1][b];
 	var C = x0[2][c];
 	var D = x0[3][d];
+	console.log(a, b, c, d);
+	console.log(A, B, C, D);
+
+var maxSpeed = {
+    a: A, 
+    b: B, 
+    c: C, 
+    d: D,
+};
+var sortable = [];
+for (var vehicle in maxSpeed) {
+    sortable.push([vehicle, maxSpeed[vehicle]]);
+}
+
+sortable.sort(function(a, b) {
+    return a[1] - b[1];
+	
+});
+console.log(sortable);
+
+var qwe = [sortable[0][0], sortable[1][0], sortable[2][0],sortable[3][0]];
+console.log(qwe);
+Qtype();
+
+/*
 	console.log(a, b, c, d);
 	console.log(A, B, C, D);
 	var order = [A, B, C, D];
@@ -96,6 +121,15 @@ function XjunctionPreference(){
 	for (var 
 */	
   }
+  
+function Qtype(){
+	if(sortable[2][1] = 0){
+		choice();
+	}
+	if([sortable[0][1] != sortable[1][1] != sortable[2][1] !=sortable[3][1]]){
+	
+}	
+  
 function drawX(A, B, C, D){
 	var raz = {0:0, 1:1, 2:2, 2:3};
 	var dva = {3:4, 0:0, 1:5, 1:6};
