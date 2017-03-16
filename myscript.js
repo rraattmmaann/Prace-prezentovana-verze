@@ -86,7 +86,8 @@ function XjunctionPreference(){
 	var D = x0[3][d];
 	console.log(a, b, c, d);
 	console.log(A, B, C, D);
-
+}
+function sort(){
 var maxSpeed = {
     a: A, 
     b: B, 
@@ -107,20 +108,7 @@ console.log(sortable);
 var qwe = [sortable[0][0], sortable[1][0], sortable[2][0],sortable[3][0]];
 console.log(qwe);
 Qtype();
-
-/*
-	console.log(a, b, c, d);
-	console.log(A, B, C, D);
-	var order = [A, B, C, D];
-	console.log(order);
-	drawX(A,B,C,D);
-/*	
-	var mapa = {qwe: a, asd: b, yxc: c, mnb: d};
-	console.log(mapa);
-	var sort = [];
-	for (var 
-*/	
-  }
+}
   
 function Qtype(){
 	if(sortable[2][1] = 0){
