@@ -86,8 +86,12 @@ function XjunctionPreference(){
 	var D = x0[3][d];
 	console.log(a, b, c, d);
 	console.log(A, B, C, D);
+/*	
 }
+
+
 function sort(){
+	*/
 var maxSpeed = {
     a: A, 
     b: B, 
@@ -107,7 +111,7 @@ console.log(sortable);
 
 var qwe = [sortable[0][0], sortable[1][0], sortable[2][0],sortable[3][0]];
 console.log(qwe);
-Qtype();
+// Qtype();
 }
   
 function Qtype(){
@@ -118,16 +122,9 @@ function Qtype(){
 	
 }	
   
+}
 function drawX(A, B, C, D){
-	var raz = {0:0, 1:1, 2:2, 2:3};
-	var dva = {3:4, 0:0, 1:5, 1:6};
-	var tri = {2:7, 4:8, 0:0, 3:9};
-	var ctyry =  {2:10, 3:11, 3:12, 0:0};
-	var v = raz.valueOf(A);
-	var x = dva.valueOf(B);
-	var y = tri.valueOf(C);
-	var z = ctyry.valueOf(D);
-	console.log(z);
+
 
 }
 
@@ -192,8 +189,8 @@ switch(choice){
 	XjunctionLights();
 	break;
 }
- 
 }
+ 
 
 
 
