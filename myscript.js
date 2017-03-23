@@ -1,4 +1,111 @@
 /* alert("Hello World!"); */
+var table = [
+ [
+	[0,1,2],
+	[2,0,1],
+	[1,2,0],
+],
+/*
+[
+	[]
+	[]
+	[]
+],
+*/
+[
+	[0,1,1],
+	[3,0,2],
+	[1,2,0],
+ ],
+[
+	[0,1,2],
+	[1,0,1],
+	[1,3,0],
+ ],
+[
+	[0,2,3],
+	[2,0,1],
+	[1,1,0],
+ ],
+[
+	[[0,0],[1,2],[3,0],[4,1]], //pozn 3.
+	[[3,1],[0,0],[1,2],[3,0]], //modifikovaná
+	[[2,0],[3,1],[0,0],[1,2]], //pozn. 1.
+	[[1,2],[2,0],[4,1],[0,0]], //pozn. 3.
+],
+[
+	[0,3,4,4],
+	[3,0,2,3],
+	[2,2,0,1],
+	[1,1,1,0],
+],
+/*
+[
+	[,,,],
+	[,,,],
+	[,,,],
+	[,,,],
+],
+*/
+[
+	[0,1,2,2],
+	[1,0,1,1],
+	[4,4,0,3],
+	[2,3,3,0],
+],
+[
+	[0,1,1,1],
+	[4,0,3,4],
+	[3,3,0,2],
+	[1,2,2,0],
+],
+[
+	[0,3,4,4],
+	[3,0,2,3],
+	[2,2,0,1],
+	[1,1,1,0],
+],
+[
+	[0,2,3,3],
+	[2,0,1,2],
+	[1,1,0,1],
+	[3,4,4,0],
+],
+]
+
+function Tjunction(){
+alert("křižovatka typu T");		// pravděpodobně zde budou další 
+	var a =Math.floor(Math.random() * 4);	//kam auto pojede 
+	var b =Math.floor(Math.random() * 4);
+	var c =Math.floor(Math.random() * 4);
+	var d =Math.floor(Math.random() * 4);
+	var typ =Math.floor(math.random() * )
+	var A = x0[][0][a][0];						//kolikátý pojede
+	var B = x0[][1][b][0];
+	var C = x0[][2][c][0];
+	var D = x0[][3][d][0];
+	console.log(a, b, c, d);
+	console.log(A, B, C, D);
+	sortX();
+}
+
+function Xjunction(){
+alert("křižovatka typu X");		// pravděpodobně zde budou další 
+	var a =Math.floor(Math.random() * 4);	//kam auto pojede 
+	var b =Math.floor(Math.random() * 4);
+	var c =Math.floor(Math.random() * 4);
+	var A = x0[][0][a][0];						//kolikátý pojede
+	var B = x0[][1][b][0];
+	var C = x0[][2][c][0];
+	console.log(a, b, c, d);
+	console.log(A, B, C, D);
+	sortX();
+}
+}
+
+
+
+/*
 var t1 = [
 	[0,1,2],
 	[2,0,1],
@@ -10,7 +117,7 @@ var t2 = [
 	[]
 	[]
 ]
-*/
+
  var tp1 = [
 	[0,1,1],
 	[3,0,2],
@@ -39,7 +146,7 @@ var t2 = [
 	[[3,1],[0,0],[1,2],[2,0]], původní
 	[[2,0],[3,1],[0,0],[1,2]], //pozn. 1.
 	[[1,2],[2,0],[4,1],[0,0]],
-*/	
+	
  var xpp1 = [
 	[0,3,4,4],
 	[3,0,2,3],
@@ -53,7 +160,7 @@ var xpp2 = [
 	[,,,]
 	[,,,]
 ]
-*/
+
  var xp1 = [
 	[0,1,2,2],
 	[1,0,1,1],
@@ -110,19 +217,23 @@ function XjunctionPreference(){
 	Tfree = Math.floor(Math.random() * 6) + 1;
 	switch(Tfree){
 		case 1:
-			XjunctionPreference1();	
+			XjunctionPreference1();
+			break;		
 		case 2:
 			XjunctionPreference2();
+			break;
 		case 3:
 			XjunctionPreference3();
+			break;
 		case 4:
 			Xjunctionpreference4();
+			break;
 		case 5:
 			XjunctionPreference5();
+			break;
 		case 6:
-			XjunctionPreference();	
-	}// alert("Křižovatka typu X bez upravení přednosti v jízdě");
- //a - sloupec v tabulce (směr, kam auto jede) 
+			XjunctionPreference6();	
+	}
 
 }
 /*	
@@ -177,7 +288,7 @@ function TjunctionFree(){
 		case 2:
 			TjunctionFree2();
 		case 3:
-			TjunctionFree3();
+			TjunctionFree3();	
 	}
 }
 function TjunctionFree1(){
@@ -290,7 +401,11 @@ function TjunctionPolice(){
 function XjunctionLights(){
 	alert("křižovatka typu X řízená světelnou signalizací");
 }
-
+																					//
+																					//
+																					//	začátek kódu
+																					//
+																					//
  var blem = choice();
 function choice(){
       var choice = junctionChoice();
