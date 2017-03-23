@@ -94,9 +94,12 @@ alert("křižovatka typu X");		// pravděpodobně zde budou další
 	var a =Math.floor(Math.random() * 4);	//kam auto pojede 
 	var b =Math.floor(Math.random() * 4);
 	var c =Math.floor(Math.random() * 4);
-	var A = x0[][0][a][0];						//kolikátý pojede
-	var B = x0[][1][b][0];
-	var C = x0[][2][c][0];
+	var x = 0;
+	var y = 0;
+	var z = 0;
+	var A = table[x][0][a][0];						//kolikátý pojede
+	var B = table[y][1][b][0];
+	var C = table[z][2][c][0];
 	console.log(a, b, c, d);
 	console.log(A, B, C, D);
 	sortX();
