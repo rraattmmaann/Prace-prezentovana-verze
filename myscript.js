@@ -18,19 +18,31 @@ var t1 = [
  ]
  
  var x0 = [
-	[0,1,2,4], //pozn 3.
-	[3,0,1,2],
-	[2,3,0,1], //pozn. 1.
-	[1,2,4,0], //pozn. 3.
+	[[0,0],[1,2],[3,0],[4,1]], //pozn 3.
+	[[3,1],[0,0],[1,2],[3,0]],
+	[[2,0],[3,1],[0,0],[1,2]], //pozn. 1.
+	[[1,2],[2,0],[4,1],[0,0]], //pozn. 3.
 ]
-
+/*
+	[[0,0],[1,2],[2,0],[4,1]], //pozn 3.
+	[[3,1],[0,0],[1,2],[2,0]],
+	[[2,0],[3,1],[0,0],[1,2]], //pozn. 1.
+	[[1,2],[2,0],[4,1],[0,0]],
+*/	
  var xpp1 = [
 	[0,3,4,4],
 	[3,0,2,3],
 	[2,2,0,1],
 	[1,1,1,0],
 ]
-
+/*
+var xpp2 = [
+	[,,,]
+	[,,,]
+	[,,,]
+	[,,,]
+]
+*/
  var xp1 = [
 	[0,1,2,2],
 	[1,0,1,1],
@@ -79,19 +91,20 @@ function XjunctionPreference(){
 	var b =Math.floor(Math.random() * 4);
 	var c =Math.floor(Math.random() * 4);
 	var d =Math.floor(Math.random() * 4);
-	var d =Math.floor(Math.random() * 4);
-	var A = x0[0][a];						//kolikátý pojede
-	var B = x0[1][b];
-	var C = x0[2][c];
-	var D = x0[3][d];
+	var A = x0[0][a][0];						//kolikátý pojede
+	var B = x0[1][b][0];
+	var C = x0[2][c][0];
+	var D = x0[3][d][0];
 	console.log(a, b, c, d);
 	console.log(A, B, C, D);
+	sort();
+}
 /*	
 }
 
-
 function sort(){
 	*/
+function sortX(){
 var maxSpeed = {
     a: A, 
     b: B, 
@@ -109,27 +122,88 @@ sortable.sort(function(a, b) {
 });
 console.log(sortable);
 
-var qwe = [sortable[0][0], sortable[1][0], sortable[2][0],sortable[3][0]];
+var qwe = [sortable[0][0][0], sortable[1][0][0], sortable[2][0][0],sortable[3][0][0]];
 console.log(qwe);
 // Qtype();
 }
   
 function Qtype(){
 	if(sortable[2][1] = 0){
-		choice();
+		choice();jav
+	}else	if([qwe[0][1][0]  = qwe[1][1][0] = qwe[2][1][0] = qwe[3][1][0]]){
+			choice();
+	}	else if(qwe[1][1][0] = 0 && (qwe[2][1][1] = qwe[3][1][1] )){
+			chodice();
 	}
-	if([sortable[0][1] != sortable[1][1] != sortable[2][1] !=sortable[3][1]]){
-	
-}	
-  
-}
+	}  
 function drawX(A, B, C, D){
 
 
 }
 
 function TjunctionFree(){
-  alert("Křižovatka typu X");
+  alert("Křižovatka typu T");
+	Tfree = Math.floor(Math.random() * 3) + 1;
+	switch(Tfree){
+		case 1:
+			TjunctionFree1();	
+		case 2:
+			TjunctionFree2();
+		case 3:
+			TjunctionFree3();
+	}
+}
+function TjunctionFree1(){
+	var a =Math.floor(Math.random() * 3);
+	var b =Math.floor(Math.random() * 3);
+	var c =Math.floor(Math.random() * 3);
+	var A = t1[0][a];					
+	var B = t1[1][b];
+	var C = t1[2][c];
+	sort();
+
+}
+
+function TjunctionFree2(){
+	var a =Math.floor(Math.random() * 3);
+	var b =Math.floor(Math.random() * 3);
+	var c =Math.floor(Math.random() * 3);
+	var A = t2[0][a];					
+	var B = t2[1][b];
+	var C = t2[2][c];
+	sort();
+
+}
+
+function TjunctionFree3(){
+	var a =Math.floor(Math.random() * 3);
+	var b =Math.floor(Math.random() * 3);
+	var c =Math.floor(Math.random() * 3);
+	var A = t3[0][a];					
+	var B = t3[1][b];
+	var C = t3[2][c];
+	sort();
+}
+function sortT(){
+var maxSpeed = {
+    a: A, 
+    b: B, 
+    c: C,
+};
+var sortable = [];
+for (var vehicle in maxSpeed) {
+    sortable.push([vehicle, maxSpeed[vehicle]]);
+}
+
+sortable.sort(function(a, b) {
+    return a[1] - b[1];
+	
+});
+console.log(sortable);
+
+var qwe = [sortable[0][0][0], sortable[1][0][0], sortable[2][0][0]];
+console.log(qwe);
+// Qtype();
 }
 
 function TjunctionPreference(){
@@ -190,8 +264,6 @@ switch(choice){
 	break;
 }
 }
- 
-
 
 
 /*
