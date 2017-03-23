@@ -4,28 +4,39 @@ var t1 = [
 	[2,0,1],
 	[1,2,0],
 ];
-
- var t2 = [
+/*
+var t2 = [
+	[]
+	[]
+	[]
+]
+*/
+ var tp1 = [
 	[0,1,1],
 	[3,0,2],
 	[1,2,0],
  ]
 
- var t3 = [
+ var tp2 = [
 	[0,1,2],
 	[1,0,1],
 	[1,3,0],
  ]
+ var tp3 = [
+	[0,2,3],
+	[2,0,1],
+	[1,1,0],
+ ]
  
  var x0 = [
 	[[0,0],[1,2],[3,0],[4,1]], //pozn 3.
-	[[3,1],[0,0],[1,2],[3,0]],
+	[[3,1],[0,0],[1,2],[3,0]], //modifikovaná
 	[[2,0],[3,1],[0,0],[1,2]], //pozn. 1.
 	[[1,2],[2,0],[4,1],[0,0]], //pozn. 3.
 ]
 /*
 	[[0,0],[1,2],[2,0],[4,1]], //pozn 3.
-	[[3,1],[0,0],[1,2],[2,0]],
+	[[3,1],[0,0],[1,2],[2,0]], původní
 	[[2,0],[3,1],[0,0],[1,2]], //pozn. 1.
 	[[1,2],[2,0],[4,1],[0,0]],
 */	
@@ -80,13 +91,6 @@ var xpp2 = [
 
 function XjunctionFree(){				//funkce pro jednotlivé křižovatky
   alert("křižovatka typu T");		// pravděpodobně zde budou další 
-									//switche, které budou odkazovat
-									//na specifické případy
-}
-
-function XjunctionPreference(){
- // alert("Křižovatka typu X bez upravení přednosti v jízdě");
- //a - sloupec v tabulce (směr, kam auto jede) 
 	var a =Math.floor(Math.random() * 4);	//kam auto pojede 
 	var b =Math.floor(Math.random() * 4);
 	var c =Math.floor(Math.random() * 4);
@@ -97,7 +101,29 @@ function XjunctionPreference(){
 	var D = x0[3][d][0];
 	console.log(a, b, c, d);
 	console.log(A, B, C, D);
-	sort();
+	sortX();								//switche, které budou odkazovat
+									//na specifické případy
+}
+
+function XjunctionPreference(){
+ var Tfree = 0;
+	Tfree = Math.floor(Math.random() * 6) + 1;
+	switch(Tfree){
+		case 1:
+			XjunctionPreference1();	
+		case 2:
+			XjunctionPreference2();
+		case 3:
+			XjunctionPreference3();
+		case 4:
+			Xjunctionpreference4();
+		case 5:
+			XjunctionPreference5();
+		case 6:
+			XjunctionPreference();	
+	}// alert("Křižovatka typu X bez upravení přednosti v jízdě");
+ //a - sloupec v tabulce (směr, kam auto jede) 
+
 }
 /*	
 }
@@ -143,6 +169,7 @@ function drawX(A, B, C, D){
 
 function TjunctionFree(){
   alert("Křižovatka typu T");
+	var Tfree = 0;
 	Tfree = Math.floor(Math.random() * 3) + 1;
 	switch(Tfree){
 		case 1:
@@ -160,7 +187,7 @@ function TjunctionFree1(){
 	var A = t1[0][a];					
 	var B = t1[1][b];
 	var C = t1[2][c];
-	sort();
+	sortT();
 
 }
 
@@ -171,7 +198,7 @@ function TjunctionFree2(){
 	var A = t2[0][a];					
 	var B = t2[1][b];
 	var C = t2[2][c];
-	sort();
+	sortT();
 
 }
 
@@ -182,7 +209,7 @@ function TjunctionFree3(){
 	var A = t3[0][a];					
 	var B = t3[1][b];
 	var C = t3[2][c];
-	sort();
+	sortT();
 }
 function sortT(){
 var maxSpeed = {
@@ -207,7 +234,45 @@ console.log(qwe);
 }
 
 function TjunctionPreference(){
-  alert("Kruhový objezd");  
+  alert("Křižovatka typu T s upravenou předností v jízdě"); 
+	 var TPref = 0;
+	 Tfree = Math.floor(Math.random() * 3) + 1;
+	switch(Tfree){
+		case 1:
+			TjunctionPref1();	
+		case 2:
+			TjunctionPref2();
+		case 3:
+			TjunctionPref3();
+}
+function TjunctionPref1(){
+var a =Math.floor(Math.random() * 3);
+	var b =Math.floor(Math.random() * 3);
+	var c =Math.floor(Math.random() * 3);
+	var A = t3[0][a];					
+	var B = t3[1][b];
+	var C = t3[2][c];
+	sortT();
+}
+
+function TjunctionPref2(){
+var a =Math.floor(Math.random() * 3);
+	var b =Math.floor(Math.random() * 3);
+	var c =Math.floor(Math.random() * 3);
+	var A = t3[0][a];					
+	var B = t3[1][b];
+	var C = t3[2][c];
+	sortT();
+}
+
+function TjunctionPref3(){
+var a =Math.floor(Math.random() * 3);
+	var b =Math.floor(Math.random() * 3);
+	var c =Math.floor(Math.random() * 3);
+	var A = t3[0][a];					
+	var B = t3[1][b];
+	var C = t3[2][c];
+	sortT();
 }
 
 function roundabout(){
