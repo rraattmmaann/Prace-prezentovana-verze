@@ -1,10 +1,10 @@
 
 
 var tableXfree = [
-    [[0,10],[10,10],[2,10],[2,3]],
-    [[3,4],[0,10],[10,10],[3,10]],
-    [[4,10],[4,1],[0,10],[10,10]],
-    [[10,10],[1,10],[1,2],[0,10]],
+    [[5,10],[10,10],[1,10],[1,2]],
+    [[2,3],[5,10],[10,10],[2,10]],
+    [[3,10],[3,0],[5,10],[10,10]],
+    [[10,10],[0,10],[0,1],[5,10]],
 ]
 
 var tableTfree = [
@@ -19,19 +19,19 @@ function XFGenerator(){
     var b = Math.floor(Math.random() * 4);
     var first = tableXfree[a][b];
     var order = [];
-    if( first == 10 || first == 0){
+    if( first[0] == 10 || first[0] == 5){
         XFGenerator();
         return;
     }
-console.log(a,b);
-console.log(first); 
-delete carChoice[b];
+console.log(b,a);           //a = y; b = x
+console.log("pole, které pojede jako první", first); 
+delete carChoice[a];
 console.log(carChoice);
 delete carChoice[first[0]];
 delete carChoice[first[1]];
-console.log(carChoice);
-order.push(b);
-console.log(order);
+console.log("jako další může jet auto z řádku", carChoice);
+order.push(a);
+console.log("postupně pojedou", order);
 /*
 while(carchoice != undefined){
     
