@@ -32,11 +32,11 @@ delete carChoice[first[1]];
 console.log("jako další může jet auto z řádku", carChoice);
 order.push(a);
 console.log("postupně pojedou", order);
-/*
+
 while(carchoice != undefined){
     
 } 
-*/  
+
 }
 
 XFGenerator();
