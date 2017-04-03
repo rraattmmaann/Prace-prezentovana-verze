@@ -19,39 +19,36 @@ function XFGenerator(){
     var b = Math.floor(Math.random() * 4);
     var first = tableXfree[a][b];
     var order = [];
-    if( first[0] == 10 || first[0] == 5){
+    if( first[0] == 5){
         XFGenerator();
         return;
     }
 console.log(b,a);           //a = y; b = x
 console.log("pole, které pojede jako první", first);
-var index1 = carChoice.indexOf(a);
+var index1 = a;
 carChoice.splice(index1, 1);
-var index2 = carChoice.indexOf(first[0]);
+var index2 = first[0];
+if(index2 !== 10)
 carChoice.splice(index2, 1);
-var index3 = carChoice.indexOf(first[1]);
+var index3 = first[1];
+if(index3 !== 10){
 carChoice.splice(index3,1);
+}
 console.log("jako další může jet auto z řádku", carChoice);
 order.push(a);
 console.log("postupně pojedou", order);
 return carChoice;
+return order;
 }
-function tryThat(){
-    var x = Math.floor(Math.random() * 4);
-    var y = Math.floor(Math.random() * 4);
-    var tryIt = tableXfree[y][x];
-      console.log(x, y);
-      console.log(tryIt);
 
-        
+function nextOne(){
+
 }
 var carChoice = [];
 XFGenerator();
     var x = 0;
     var y = 0;
-tryThat();
-
-    if(!carChoice.includes(y)){
-       tryThat(); 
-    }
-    console.log(y);
+    var tryIt = 0;
+when(carChoice != empty){
+    nextOne();
+}
