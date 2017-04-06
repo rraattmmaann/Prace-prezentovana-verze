@@ -1,4 +1,8 @@
-
+var x = 0;
+var y = 0;
+var tryIt = 0;
+var carChoice = [];
+//var order = [];
 
 var tableXfree = [
     [[5,10],[10,10],[1,10],[1,2]],
@@ -37,18 +41,43 @@ carChoice.splice(index3,1);
 console.log("jako další může jet auto z řádku", carChoice);
 order.push(a);
 console.log("postupně pojedou", order);
+//return carChoice;
 return carChoice;
-return order;
 }
 
-function nextOne(){
 
-}
-var carChoice = [];
-XFGenerator();
-    var x = 0;
-    var y = 0;
-    var tryIt = 0;
-when(carChoice != empty){
-    nextOne();
-}
+function nextOne(order, carChoice){
+    this.order = order;
+    this.carChoice = carChoice;
+    console.log(carChoice);
+    var wTry = this.carChoice.length;
+    console.log(wTry);
+    var q = Math.floor(Math.random()*4);
+    var w = Math.floor(Math.random()*wTry);
+    var nextCar = tableXfree[q][w];
+    console.log(q, w);
+    console.log(nextCar);
+    console.log(this.order);
+
+   
+   
+   
+   
+   
+   
+    if(this.order[this.order.length-1] == w){
+        nextOne();
+    }
+   
+    var lastOne = order[order.length-1];
+
+
+    console.log(q, w);
+  
+    console.log(lastOne);
+
+}    
+
+//XFGenerator();
+
+nextOne(XFGenerator());
