@@ -17,22 +17,23 @@ function XFGenerator(){
     console.log(b,a);
     var order = [];
     if( first[0] == 5){
-        console.log("returned");
-        XFGenerator();
-        //return;
+        return XFGenerator();
     }else{
-        
+      
     }
     console.log("pole, které pojede jako první", first);
-var index1 = a;
-carChoice.splice(index1, 1);
-var index2 = first[0];
-if(index2 !== 10)
-carChoice.splice(index2, 1);
-var index3 = first[1];
-if(index3 !== 10){
-carChoice.splice(index3,1);
-}
+    var index1 = a;
+    carChoice.splice(index1, 1);
+    var i2 = first[0]; 
+    var index2 = carChoice.indexOf(first[0]);
+    if(i2 !== 10){
+        carChoice.splice(index2, 1);
+    }
+    var i3 = first[1];
+    var index3 = carChoice.indexOf(i3);
+    if(i3 !== 10){
+        carChoice.splice(index3,1);
+    }
     console.log("může jet jako další řádek", carChoice);
     return carChoice;
 }
@@ -40,16 +41,13 @@ carChoice.splice(index3,1);
 function nextOne(carChoice){
     carChoice1 = carChoice;
     console.log(carChoice1);
-    /*
+    
     var r1 = Math.floor(Math.random()*carChoice.length)
+    console.log(r1);
     var r2 = Math.floor(Math.random()*4);
     var r1 = tableXfree[r2][r1][0];
+
+   
     console.log(r1, r2);
-    */
+   
 }
-
-
-//XFGenerator();
-//while(carChoice !== undefined){
-    
-//}
