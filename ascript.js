@@ -4,8 +4,8 @@ var tableXfree = [
     [[3,10],[3,0],[5,10],[10,10]],
     [[10,10],[0,10],[0,1],[5,10]],
 ]
-var carChoice = XFGenerator();
-nextOne(carChoice);
+var base = XFGenerator();
+secondOne(base);
 
 
 
@@ -21,7 +21,9 @@ function XFGenerator(){
     }else{
       
     }
-    console.log("pole, které pojede jako první", first);
+    console.log("pole, které pojede jako první", first); 
+    //zde se vyřadí auta, pro ktará nemá smysl průjezd po průjezdu 
+    //auta vybraného
     var index1 = a;
     carChoice.splice(index1, 1);
     var i2 = first[0]; 
@@ -35,19 +37,23 @@ function XFGenerator(){
         carChoice.splice(index3,1);
     }
     console.log("může jet jako další řádek", carChoice);
-    return carChoice;
+    order.push(a);
+    console.log(order);
+    var base = [[order],[carChoice]];
+    console.log(base);
+    return base;
 }
 
-function nextOne(carChoice){
-    carChoice1 = carChoice;
-    console.log(carChoice1);
-    
-    var r1 = Math.floor(Math.random()*carChoice.length)
+function secondOne(base){
+    var carChoice = base[1];
+    var order = base[0];
+    console.log(order);
+    console.log(carChoice);
+    if(order[0] = 0){
+        var r1 = 3;
+    }else{
+        var r1 = valueOf(order[1]) + 1;
+    }
     console.log(r1);
-    var r2 = Math.floor(Math.random()*4);
-    var r1 = tableXfree[r2][r1][0];
-
-   
-    console.log(r1, r2);
-   
+       
 }
