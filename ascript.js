@@ -31,7 +31,7 @@ function XFGenerator(){
     }else{
       
     }
-    console.log("pole, které pojede jako první", first); 
+    console.log("hodnota pole, které pojede jako první", first); 
     //zde se vyřadí auta, pro ktará nemá smysl průjezd po průjezdu 
     //auta vybraného
     var index1 = a;
@@ -67,7 +67,7 @@ function secondOne(base){
     }
     var delR1 = carChoice.indexOf(r1); //vymaže druhé auto z carChoice
     carChoice.splice(delR1,1);
-    r2 = Math.floor(Math.random()*4);   //vybere, kam pojede 2. auto
+    r2 = Math.floor(Math.random()*3);   //vybere, kam pojede 2. auto
     var car2 = tableXfree[r1][r2];
     console.log("pole druhého auta", r2, r1);                //políčko, popisující druhé auto
     console.log(car2);
@@ -98,9 +98,25 @@ function secondOne(base){
         }
      } 
     }else{
+        var n = carChoice[0];
+        var m = 0;
+        var choice = [0,1,2,3];
+        console.log(n,m);
+        choice.splice(n,1);
+        var b = order.valueOf(order[0]);
+        var v = choice.indexOf(b);
+        choice.splice(v,1);
+        console.log(choice);
+        var sCar = Math.floor(Math.random()*2);
+        if(sCar == 0){
+            m = choice[0];
+        }else{
+            m = choice[1];
+        }
+        var thisCar = tableXfree[n][m];
         order.push(carChoice[0]); 
         carChoice.splice(0,1);
-        //je třeba náhodně vybrat, jestli pojede l/r
+        console.log(thisCar);
     } 
     
 
@@ -129,7 +145,7 @@ function thirdOne(base){
         f1 = carChoice.valueOf(carChoice[0]);
         f2 = Math.floor(Math.random()*4);
         var car4 = tableXfree[f2][f1];
-        console.log(f2, f1);
+        console.log("pole jedoucí jako třetí",f2, f1);
         console.log(car4);
         if(car4[0] == 5){
             carChoice.splice(0,1);
@@ -148,6 +164,7 @@ function thirdOne(base){
             carChoice.splice(1,1);
             console.log("wtf");
         }else{
+            console.log("hey");
             console.log(carChoice);
             order.push(fb);
             carChoice.splice(1,1);
