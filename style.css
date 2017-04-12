@@ -1,9 +1,9 @@
 .nadpis {
 	font-family: sans-serif;
-  font-size : 100%; 
-  padding-top: 1em;
-  color: black;
-  text-align : center;
+ 	 font-size : 100%; 
+  	padding-top: 1em;
+  	color: black;
+  	text-align : center;
 }
 
 body {
@@ -15,9 +15,7 @@ body {
 .two{
 	background-color: #4bd740;
 }
-.project{
-	
-}
+
 .text_cont{
 	font-size: 0.75em;
 	margin-top: 1.5em;
@@ -47,123 +45,110 @@ body {
 	position: absolute;
 	left: 680px;
     bottom: -143px;
+	visibility: hidden;
 }
+
 #A1{
 	position: absolute;
 	left: 680px;
     bottom: -143px;
+	visibility: hidden;
 }
+
 #A2{
 	position: absolute;
 	left: 680px;
     bottom: -143px;
+	visibility: hidden;
 }
+
 #B0{
 	position: absolute;
 	left: 866px;
     bottom: 242px;
+	visibility: hidden;
 }
 #B1{
 	position: absolute;
 	left: 866px;
     bottom: 242px;
+	visibility: hidden;
 }
 #B2{
 	position: absolute;
 	left: 866px;
     bottom: 242px;
+	visibility: hidden;
 }
 #C0{
 	position: absolute;
 	left: 390px;
     bottom: 356px;
+	visibility: hidden;
 }
 #C1{
 	position: absolute;
 	left: 390px;
     bottom: 356px;
+	visibility: hidden;
 }
 #C2{
 	position: absolute;
 	left: 390px;
     bottom: 356px;
+	visibility: hidden;
 }
 #D0{
 	position: absolute;
 	left: 100px;
     bottom: 126px;
+	visibility: hidden;
 }
 #D1{
 	position: absolute;
 	left: 100px;
     bottom: 126px;
+	visibility: hidden;
 }
 #D2{
 	position: absolute;
 	left: 100px;
     bottom: 126px;
+	visibility: hidden;
 }
 .main{
 	background-color: #00ff00; 
 }
-/*
-.carA{
-	visibility: hidden;
+
+.table{
+	border-collapse: collapse;	
 }
 
-.carB{
-	visibility: hidden;
+tr {
+	border-bottom: 1px solid black;
 }
-.carC{
-	visibility: hidden;
+.even{
+	background-color: #00ff00;
 }
-.carD{
-	visibility: hidden;
+.odd{
+	background-color: #7ee875;
 }
-*/
-#main_image{
-	position: relative;
-    width: 100px;
-    height: 100px;
-    background: blue;
+#first{
+	background-color: #00ff00;
 }
-#overlay_image{
-    position: absolute;
-	left: 20px;
-    bottom: 100px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    background: red;
+.button{
+	transition-duration: 0.5s;
+	background-color: #00ff00;
 }
-#A{
-		position: absolute;
-		left: 500px;
-		top: 850px;
-		width: auto;
-		height: auto;
+.button:hover{
+	background-color: black;
 }
-#B{
-		position: absolute;
-		left: 15px;
-		top: 630px;
-		width: auto;
-		height: auto;
+a.Sbutton{
+	-webkit-appearance: button;
+	color: #00ff00;
+	
 }
-#C{
-		position: absolute;
-		left: 15px;
-		top: 630px;
-		width: auto;
-		height: auto;
-		display: none;
+.on{
+	text-align: center;
+	padding-top: 1em;
 }
-#D{
-		position: absolute;
-		left: 15px;
-		top: 630px;
-		width: auto;
-		height: auto;
-		display: none;
-}
-
