@@ -1,251 +1,351 @@
-﻿var tableXfree = [
-    [[5,10],[10,10],[1,10],[1,2]],
-    [[2,3],[5,10],[10,10],[2,10]],
-    [[3,10],[3,0],[5,10],[10,10]],
-    [[10,10],[0,10],[0,1],[5,10]],
+﻿
+// základní tabulka popisující přednosti mezi vozidly
+var tableXfree = [
+    [[5, 10], [10, 10], [1, 10], [1, 2]],
+    [[2, 3], [5, 10], [10, 10], [2, 10]],
+    [[3, 10], [3, 0], [5, 10], [10, 10]],
+    [[10, 10], [0, 10], [0, 1], [5, 10]],
 ]
-var carChoice = [0,1,2,3];
-var order = 0;
-var base = first();
-
-//console.log(base[0], base[1], base[2]);
-if(base[1] !== undefined){
-    nextOne(base);
+//pomocné pole, pomocí kterého jsou převáděny hodnoty
+//(polohy aut) v první tabulce na zobrazované obrázky
+var table = [
+    [100, 1, 2, 3],
+    [4, 100, 5, 6],
+    [7, 8, 100, 9],
+    [10, 11, 12, 100],
+]
+//základní neznámé potřebné pro základní funkce generující
+//pořadí průjezdu křižovatkou
+var base;
+var base1;
+var base2;
+var base3;
+//hlavní funkce kterou se pouští generátor pořadí průjezdu
+function nextExercise() {
+    hide();
+    base = first();
+    base1 = nextOne(base);
+    base2 = third(base1);
+    base3 = lastOne(base2);
 }
-third(base);
-lastOne(base);
 
-function first(){
+nextExercise()
+
+//funkce první - zde je náhodně vybráno pole z zabulky tableXfree
+//if na začátku funkce vyřazuje případy, kdy by auto z křižovatky
+//vyjíždělo stejným vězdem, kterým do ní přijelo.
+function first() {
     var order = [];
-    var carChoice = [0,1,2,3];
-    var a = Math.floor(Math.random()*4);
-    var b = Math.floor(Math.random()*4);
-    if(a == b){
+    var carChoice = [0, 1, 2, 3];
+    var a = Math.floor(Math.random() * 4);
+    var b = Math.floor(Math.random() * 4);
+    if (a == b) {
         return first();
     }
+    //neznámé a,b určují pozici, která bude vybrána v úvodní tabulce
     var firstCar = tableXfree[a][b];
-    var tablePosition = [b,a];
-    console.log(b,a);
-    console.log(firstCar);
-    //console.log(carChoice);
+    var tablePosition = [b, a];
     var index1 = firstCar[0];
+    //tato část kódu eliminuje z carChoice auta, která jsou již
+    //vyřazena z pořadí průjezdu křižovatkou
     var i1 = carChoice[index1];
-    //console.log(i1);
-    if(i1 == undefined || i1 == -1){
-
-    }else{
-        carChoice.splice(i1,1);
+    if (i1 == undefined || i1 == -1) {
+    } else {
+        carChoice.splice(i1, 1);
     }
-    //console.log(carChoice);
     var index2 = firstCar[1];
     var i2 = carChoice.indexOf(index2);
-    //console.log(i2);
-    if(i2 == undefined || i2 == -1){
-
-    }else{
-        carChoice.splice(i2,1);
+    if (i2 == undefined || i2 == -1) {
+    } else {
+        carChoice.splice(i2, 1);
     }
-    //console.log(carChoice);
     var i3 = carChoice.indexOf(a);
-    //console.log(i3);
-    if(i3 == undefined || i3 == -1){
-
-    }else{
-        carChoice.splice(i3,1);
+    if (i3 == undefined || i3 == -1) {
+    } else {
+        carChoice.splice(i3, 1);
     }
-
-    console.log("jako druhé a dál může jet", carChoice);
+    //funkce show() společně s tblPosition se stará o zobrazení
+    //vybraného vozidla na webové stránce
+    var tblPosition = table[a][b];
+    show(tblPosition);
     order.push(a);
-    //console.log(order);
-    //console.log(tablePosition);
-    tblPosition = [b,a];
-    var base = [order, carChoice, tablePosition];
+    var base = [order, carChoice];
     return base;
 }
-
-function nextOne(base){
+//nextOne() vybírá na základě neznámé order - pořadí aut, která
+//byla zatím vybrána auto, které může křižovatkou projíždět jako druhé
+function nextOne(base) {
     var order = base[0];
     var carChoice = base[1];
-    var last = base[2];
-    //console.log(last);
-    if(order.valueOf(order[0]) == 0){
+    //určuje, které auto může jet další
+    if (order.valueOf(order[0]) == 0) {
         var r1 = 3;
-    }else{
-        var r1 = order.valueOf(order[0]);
+    } else {
+        var r1 = order[0];
         r1--;
     }
-    console.log(order);
-    //console.log(carChoice);
-    //console.log(last);
-    console.log("řádek, kterej pojede", r1);
-    if(r1 == 3){
+    //určuje jakým směrem může vybrané auto jet
+    //aby se jeho dráha jízdy křížila z již projíždějícími auty
+    //tj. aby jim musel dát přednost a tím pádem bylo jisté, že pojede
+    //až po nich.
+    var ccl = carChoice.length;
+    if (ccl == 1) {
+        var possible = [0, 1, 2, 3];
+        var u0 = order[0];
+        possible.splice(u0, 1);
+        var u1 = carChoice[0];
+        var u = possible.indexOf(u1);
+        possible.splice(u, 1);
+        var o = Math.floor(Math.random() * 2);
+        if (o == 0) {
+            var u3 = possible[0];
+        } else {
+            var u3 = possible[1];
+        }
+    }
+    if (r1 == 3) {
         var rx = 0;
-    }else{
+    } else {
         var rx = r1 + 1;
     }
-    var options = [0,1,2,3];
-    options.splice(r1,1);
-   // console.log(options);
-   // console.log(rx);
+    var options = [0, 1, 2, 3];
+    options.splice(r1, 1);
     var rxx = options.indexOf(rx);
-    options.splice(rxx,1);
-   // console.log(options);
-    var t1 = Math.floor(Math.random()*2);
-    if(t1 == 0){
+    options.splice(rxx, 1);
+    var t1 = Math.floor(Math.random() * 2);
+    if (t1 == 0) {
         var tx = options[0];
-    }else{
+    } else {
         var tx = options[1];
     }
-   // console.log(tx, r1);
+    //zde je tedy dáno pomocí indexů r1 a tx, které pole má být
+    //vybráno z úvodní tabulky.
+    console.log("poloha 2. pole", tx, r1);
     var carValue = tableXfree[r1][tx];
-    console.log(carValue);
+    console.log("hodnota 2.pole", carValue);
     order.push(r1);
-    var y = carChoice.indexOf(r1);
-    carChoice.splice(y,1);
-    var thisCar = [tx, r1];
-    last.push(thisCar);
-    console.log("pořadí",order);
-    console.log("výběr aut 3. a 4.",carChoice);
-    console.log(last);
-    base = order, carChoice, thisCar;
-    console.log(base);
-    return base;
+    var y = carChoice.indexOf(r1); //smaže z carChoice samo sebe
+    if (r1 == undefined || r1 == -1) {
+
+    } else {
+        carChoice.splice(y, 1);
+    }
+    console.log(carChoice); //po smazání prvního auta(+ aut na něm záviských)
+    //+ po smazání 2. auta samotného
+    var y1 = carValue[0];
+    var y11 = carChoice.indexOf(y1);
+    if (y11 == undefined || y11 == -1) {
+
+    } else {
+        carChoice.splice(y11, 1);
+    }
+    var y2 = carValue[1];
+    var y22 = carChoice.indexOf(y2);
+    if (y22 == undefined || y22 == -1) {
+
+    } else {
+        carChoice.splice(y22, 1);
+    }
+    //opět funkce show(), která zobrazí druhé projíždějící auto
+    var tblPosition = table[r1][tx];
+    show(tblPosition);
+    var base1 = [order, carChoice];
+    return base1;
 }
-//
-//
-//  ==============================================
-//
-//
-function third(base){
-    console.log("====================");
-    var a = base[0][0];
-    var b = base[0][1];
-    console.log(a);
-    var order = [a,b]
-    console.log(order);
-    var carChoice = base[1];
-    var last = base[2];
-    console.log("order",order);
-    console.log("carChoice",carChoice);
+//jak už název napovídá, funkce vybírá třetí projíždějící auto
+//funguje velmi podobným způsobem jako funkce předchozí
+function third(base1) {
+    var a = base1[0][0];
+    var b = base1[0][1];
+    var order = [a, b]
+    var carChoice = base1[1];
+    console.log("order", order);
+    console.log("carChoice", carChoice);
+    var az1 = carChoice.length;
     var z1 = carChoice[0];
-        //console.log(z1);
-    if(z1 == undefined){
-        console.log("wtf");
-    }else{
-        if(a == 0){
+    if (z1 == undefined) {
+        //tento if řeší případ, kdy křižovatkou projíždí pouze
+        //dvě vozidla
+    } else {
+        if (a == 0) {
             var r1 = 3;
-            console.log("1");
-        }else{
+        } else {
             var r1 = a;
             r1--;
-            //console.log("2");
-            //console.log(r1);
         }
-        
-        //console.log(last);
         console.log("řádek, kterej pojede", z1);
-        var options = [0,1,2,3];
-        console.log(options);
-        console.log(z1);
-        options.splice(z1,1);
-        if(z1 == 3){
+        var options = [0, 1, 2, 3];
+        options.splice(z1, 1);
+        if (z1 == 3) {
             var rx = 0;
-        }else{
+        } else {
             var rx = z1 + 1;
         }
-        console.log(options);
-        console.log(rx);
+        //zde je opět vybíráno, jakým směrem se může vydat třetí vybrané auto
         var rxx = options.indexOf(rx);
-        console.log(rxx);
-        options.splice(rxx,1);
-        console.log(options);
-        var t1 = Math.floor(Math.random()*2);
-        if(t1 == 0){
+        options.splice(rxx, 1);
+        var t1 = Math.floor(Math.random() * 2);
+        if (t1 == 0) {
             var tx = options[0];
-        }else{
+        } else {
             var tx = options[1];
         }
-        console.log(z1, tx);
+        console.log("pozice třetího", tx, z1);
         var carValue = tableXfree[z1][tx];
-        console.log(carValue);
+        console.log("hodnota třetího", carValue);
         order.push(z1);
-        carChoice.splice(0,1);
+
+        carChoice.splice(0, 1);
         var thisCar = [z1, tx];
-        last.push(thisCar);
-        console.log(order);
-        console.log(carChoice);
-        console.log(last); 
+        console.log("order", order);
+        var tblPosition = table[z1][tx];
+        console.log(tblPosition);
+        show(tblPosition);
+    }
+    var base2 = [order, carChoice];
 
-    } //toto řeší případ, že už by nebylo žádné další auto v carChoice
-    base = [order, carChoice, last]
     console.log(base);
-    return base;
+    console.log(base[0][2]);
+    return base2;
 }
-
-function lastOne(base){
-    console.log("====================");
+//poslední z hlavních funkcí
+//za předpokladu, že carChoice ještě stále není prázdný, tak vybíráno
+//poslední auto projíždějící křižovatkou 
+function lastOne(base2) {
     var a = base[0][0];
-    var b = base[0][1];
-    console.log(a);
-    var order = [a,b]
-    console.log(order);
-    var carChoice = base[1];
-    var last = base[2];
-    console.log("order",order);
-    console.log("carChoice",carChoice);
+    var c = base2[0][2];
+    var order = base2[0];
+    var carChoice = base2[1];
+    var last = base2[2];
+    console.log("order", order);
+    console.log("carChoice", carChoice);
     var z1 = carChoice[0];
-        //console.log(z1);
-    if(z1 == undefined){
-        console.log("wtf");
-    }else{
-        if(a == 0){
+    //opět if řešící, jestli bude funkce přeskočena, nebo jestli
+    //se bude rozhodovat o posledním projíždějícím autě
+    if (z1 == undefined) {
+    } else {
+        if (a == 0) {
             var r1 = 3;
-            console.log("1");
-        }else{
+        } else {
             var r1 = a;
             r1--;
-            //console.log("2");
-            //console.log(r1);
+
         }
-        
-        //console.log(last);
+        //opět rozhodování na základě dalších projíždějících aut, kam
+        //toto vozidlo pojede. Ve výsledku to znamená, že auto nepojede
+        // doprava a rozhoduje se jestli pojede rovně, nebo vlevo.
         console.log("řádek, kterej pojede", z1);
-        var options = [0,1,2,3];
-        console.log(options);
-        console.log(z1);
-        options.splice(z1,1);
-        if(z1 == 3){
+        var options = [0, 1, 2, 3];
+        options.splice(z1, 1);
+        if (z1 == 3) {
             var rx = 0;
-        }else{
+        } else {
             var rx = z1 + 1;
         }
-        console.log(options);
-        console.log(rx);
         var rxx = options.indexOf(rx);
-        console.log(rxx);
-        options.splice(rxx,1);
-        console.log(options);
-        var t1 = Math.floor(Math.random()*2);
-        if(t1 == 0){
+        options.splice(rxx, 1);
+        var t1 = Math.floor(Math.random() * 2);
+        if (t1 == 0) {
             var tx = options[0];
-        }else{
+        } else {
             var tx = options[1];
         }
-        console.log(z1, tx);
+        console.log("pozice 4. auta", tx, z1);
         var carValue = tableXfree[z1][tx];
-        console.log(carValue);
+        console.log("tabuková hodnota 4.auta", carValue);
         order.push(z1);
-        carChoice.splice(0,1);
+        carChoice.splice(0, 1);
         var thisCar = [z1, tx];
-        last.push(thisCar);
-        console.log(order);
-        console.log(carChoice);
-        console.log(last); 
+        var tblPosition = table[z1][tx];
+        show(tblPosition);
+    }
+    var base3 = [order, carChoice]
+    console.log(base3);
+    return base3;
 
-    } //toto řeší případ, že už by nebylo žádné další auto v carChoice
-    base = [order, carChoice, last]
-    console.log(base);
-    return base;
-
-
+}
+//funkce zařizující že za pomocí tabulky table bude 
+function show(tblPosition) {
+    var position = tblPosition;
+    if (position == 1) {
+        console.log("proběhlo");
+        document.getElementById("A2").style.visibility = "visible";
+    }
+    if (position == 2) {
+        console.log("proběhlo");
+        document.getElementById("A1").style.visibility = 'visible';
+    }
+    if (position == 3) {
+        console.log("proběhlo");
+        document.getElementById("A0").style.visibility = 'visible';
+    }
+    if (position == 4) {
+        console.log("proběhlo");
+        document.getElementById("B0").style.visibility = 'visible';
+    }
+    if (position == 5) {
+        console.log("proběhlo");
+        document.getElementById("B2").style.visibility = 'visible';
+    }
+    if (position == 6) {
+        console.log("proběhlo");
+        document.getElementById("B1").style.visibility = 'visible';
+    }
+    if (position == 7) {
+        console.log("proběhlo");
+        document.getElementById("C1").style.visibility = 'visible';
+    }
+    if (position == 8) {
+        console.log("proběhlo");
+        document.getElementById("C0").style.visibility = 'visible';
+    }
+    if (position == 9) {
+        console.log("proběhlo");
+        document.getElementById("C2").style.visibility = 'visible';
+    }
+    if (position == 10) {
+        console.log("proběhlo");
+        document.getElementById("D2").style.visibility = 'visible';
+    }
+    if (position == 11) {
+        console.log("proběhlo");
+        document.getElementById("D1").style.visibility = 'visible';
+    }
+    if (position == 12) {
+        console.log("proběhlo");
+        document.getElementById("D0").style.visibility = 'visible';
+    }
+}
+//než je vygenerován další příklad - tak musí nejdříve být skryta auta
+//z příkladu předchozího
+function hide() {
+    document.getElementById("A2").style.visibility = "hidden";
+    document.getElementById("A1").style.visibility = 'hidden';
+    document.getElementById("A0").style.visibility = 'hidden';
+    document.getElementById("B0").style.visibility = 'hidden';
+    document.getElementById("B2").style.visibility = 'hidden';
+    document.getElementById("B1").style.visibility = 'hidden';
+    document.getElementById("C1").style.visibility = 'hidden';
+    document.getElementById("C0").style.visibility = 'hidden';
+    document.getElementById("C2").style.visibility = 'hidden';
+    document.getElementById("D2").style.visibility = 'hidden';
+    document.getElementById("D1").style.visibility = 'hidden';
+    document.getElementById("D0").style.visibility = 'hidden';
+}
+//funkce převádějící čísla (řádky v tableXfree) na označení jednotlivých aut
+function getColorNameByNumber(number) {
+    switch (number) {
+        case 0: return 'Červené'
+        case 1: return 'Zelené'
+        case 2: return 'Modré'
+        case 3: return 'Růžové'
+    }
+}
+//funkce řešící vypsání pořadí průjezdu - za účelem vypsání řešení na 
+//webovou stránku
+function result() {
+    var solutionText = document.getElementById('solution_text');
+    var colorNumbers = base3[0];
+    //vypisuje do html
+    solutionText.innerHTML = 'Řešení: ' + colorNumbers.map(getColorNameByNumber);
 }

@@ -136,19 +136,4 @@ tr {
 #first{
 	background-color: #00ff00;
 }
-.button{
-	transition-duration: 0.5s;
-	background-color: #00ff00;
-}
-.button:hover{
-	background-color: black;
-}
-a.Sbutton{
-	-webkit-appearance: button;
-	color: #00ff00;
-	
-}
-.on{
-	text-align: center;
-	padding-top: 1em;
-}
+
