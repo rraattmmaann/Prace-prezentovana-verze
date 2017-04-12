@@ -10,10 +10,14 @@ body {
 	margin: 0px;
 }
 .one {
-	background-color: #7ee875; 
+	background-color: #7ee875;
+	text-align: center;
+	font-family: sans-serif;
+	padding: 20px 0; 
 }
 .two{
 	background-color: #4bd740;
+	padding-bottom: 20px;
 }
 
 .text_cont{
@@ -25,12 +29,10 @@ body {
 }
 .contact{
 	margin-top: 2.5em;
-	font-size: 0.6em;
 	text-align: center;
 	
 }
 .nametag{
-	font-size: 0.5em;
 	margin-left: 3em;
 	padding-bottom: 1em;
 }
@@ -135,4 +137,12 @@ tr {
 }
 #first{
 	background-color: #00ff00;
+}
+
+.Sbutton {
+	text-decoration: none;
+    font-size: 2rem;
+    border: 10px solid red;
+    padding: 5px;
+    border-radius: 50px;
 }

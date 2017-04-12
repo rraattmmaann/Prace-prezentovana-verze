@@ -20,12 +20,30 @@ var table = [
     [10, 11, 12, 100],
 ]
 
+/**
+ * všechny auta s jejich id a pozicí
+ */
+var cars = [
+    { id: "A2", position: 1 },
+    { id: "A1", position: 2 },
+    { id: "A0", position: 3 },
+    { id: "B0", position: 4 },
+    { id: "B2", position: 5 },
+    { id: "B1", position: 6 },
+    { id: "C1", position: 7 },
+    { id: "C0", position: 8 },
+    { id: "C2", position: 9 },
+    { id: "D2", position: 10 },
+    { id: "D1", position: 11 },
+    { id: "D0", position: 12 },
+];
+
 //základní neznámé potřebné pro základní funkce generující
 //pořadí průjezdu křižovatkou
 var base;
 var base1;
 var base2;
-var base3;
+var resultsArray;
 
 /**
  * Hlavní funkce kterou se pouští generátor pořadí průjezdu
@@ -33,9 +51,9 @@ var base3;
 function nextExercise() {
     hide();
     base = first();
-    base1 = nextOne(base);
+    base1 = second(base);
     base2 = third(base1);
-    base3 = lastOne(base2);
+    resultsArray = lastOne(base2);
 }
 
 // Při prvním načtení stránky se spustí nový příklad
@@ -89,7 +107,7 @@ function first() {
  * nextOne() vybírá na základě neznámé order - pořadí aut, která
  * byla zatím vybrána auto, které může křižovatkou projíždět jako druhé
  */
-function nextOne(base) {
+function second(base) {
     var order = base[0];
     var carChoice = base[1];
     //určuje, které auto může jet další
@@ -280,65 +298,33 @@ function lastOne(base2) {
         var tblPosition = table[z1][tx];
         show(tblPosition);
     }
-    var base3 = [order, carChoice]
-    console.log(base3);
-    return base3;
+    var resultsArray = order;
+    console.log(resultsArray);
+    return resultsArray;
 
+}
+
+function setCarVisibility(id, visible) {
+    document.getElementById(id).style.visibility = visible ? "visible" : "hidden";
+}
+
+function showCar(id) {
+    setCarVisibility(id, true);
+}
+
+function hideCar(id) {
+    setCarVisibility(id, false);
 }
 
 /**
  * funkce zařizující že za pomocí tabulky table bude 
  */
-function show(tblPosition) {
-    var position = tblPosition;
-    if (position == 1) {
-        console.log("proběhlo");
-        document.getElementById("A2").style.visibility = "visible";
-    }
-    if (position == 2) {
-        console.log("proběhlo");
-        document.getElementById("A1").style.visibility = 'visible';
-    }
-    if (position == 3) {
-        console.log("proběhlo");
-        document.getElementById("A0").style.visibility = 'visible';
-    }
-    if (position == 4) {
-        console.log("proběhlo");
-        document.getElementById("B0").style.visibility = 'visible';
-    }
-    if (position == 5) {
-        console.log("proběhlo");
-        document.getElementById("B2").style.visibility = 'visible';
-    }
-    if (position == 6) {
-        console.log("proběhlo");
-        document.getElementById("B1").style.visibility = 'visible';
-    }
-    if (position == 7) {
-        console.log("proběhlo");
-        document.getElementById("C1").style.visibility = 'visible';
-    }
-    if (position == 8) {
-        console.log("proběhlo");
-        document.getElementById("C0").style.visibility = 'visible';
-    }
-    if (position == 9) {
-        console.log("proběhlo");
-        document.getElementById("C2").style.visibility = 'visible';
-    }
-    if (position == 10) {
-        console.log("proběhlo");
-        document.getElementById("D2").style.visibility = 'visible';
-    }
-    if (position == 11) {
-        console.log("proběhlo");
-        document.getElementById("D1").style.visibility = 'visible';
-    }
-    if (position == 12) {
-        console.log("proběhlo");
-        document.getElementById("D0").style.visibility = 'visible';
-    }
+function show(tablePosition) {
+    var position = tablePosition;
+    // najde auto s danou pozicí
+    var car = cars.find(function (car) { return car.position === position });
+    console.log(car);
+    showCar(car.id);
 }
 
 /**
@@ -346,18 +332,9 @@ function show(tblPosition) {
  * z příkladu předchozího
  */
 function hide() {
-    document.getElementById("A2").style.visibility = "hidden";
-    document.getElementById("A1").style.visibility = 'hidden';
-    document.getElementById("A0").style.visibility = 'hidden';
-    document.getElementById("B0").style.visibility = 'hidden';
-    document.getElementById("B2").style.visibility = 'hidden';
-    document.getElementById("B1").style.visibility = 'hidden';
-    document.getElementById("C1").style.visibility = 'hidden';
-    document.getElementById("C0").style.visibility = 'hidden';
-    document.getElementById("C2").style.visibility = 'hidden';
-    document.getElementById("D2").style.visibility = 'hidden';
-    document.getElementById("D1").style.visibility = 'hidden';
-    document.getElementById("D0").style.visibility = 'hidden';
+    cars.forEach(function(car) {
+        hideCar(car.id);
+    })
 }
 
 /**
@@ -378,7 +355,7 @@ function getColorNameByNumber(number) {
  */
 function result() {
     var solutionText = document.getElementById('solution_text');
-    var colorNumbers = base3[0];
+    var colorNumbers = resultsArray;
     //vypisuje do html
     solutionText.innerHTML = 'Řešení: ' + colorNumbers.map(getColorNameByNumber);
 }
