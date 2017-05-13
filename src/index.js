@@ -45,19 +45,154 @@ var base1;
 var base2;
 var resultsArray;
 
+//var typkrizovatky = 0;
+console.log("0");
+
+function start() {
+    var typkrizovatky = Math.floor(Math.random() * 2);
+    if (typkrizovatky == 0) {
+
+        console.log("a taky tudy!!!!!!!!!!!!!");
+        hide();
+        Tkrizovatka1();
+        document.getElementById("nula").style.visibility = "hidden";
+    } else {
+
+        console.log("kurva vole normální křižovatka už");
+        document.getElementById("dva").style.visibility = "hidden";
+        document.getElementById("nula").style.visibility = "visible";
+        nextExercise();
+    }
+}
+
+function Tkrizovatka1() {
+    document.getElementById("dva").style.visibility = "visible";
+    var prvni = Math.floor(Math.random() * 3);
+    console.log("1");
+    if (prvni == 0) {
+        var prvniSmer = Math.floor(Math.random() * 2) + 1;
+        if (prvniSmer == 1) {
+
+            var tretiSmer = Math.floor(Math.random() * 2);
+            if (tretiSmer == 0) {
+                var tblPosition = 4;
+                show(tblPosition);
+                var tblPosition = 1;
+                show(tblPosition);
+                var tblPosition = 8;                      
+                show(tblPosition);
+                var resultsArray = [0, 2, 1];
+                console.log(resultsArray, "1");
+                return resultsArray;
+            } else {
+                var tblPosition = 1;
+                show(tblPosition);
+                var tblPosition = 8;                        //již vyzkoušena devítka
+                show(tblPosition);
+                var resultsArray = [0, 2];
+                console.log(resultsArray, "2");
+                return resultsArray;
+            }
+        } else {
+            var tblPosition = 2;
+            show(tblPosition);
+            var tblPosition = 8;
+            show(tblPosition);
+            var resultsArray = [0, 2];
+            console.log(resultsArray, "3");
+            return resultsArray;
+        }
+    } else if (prvni == 1) {
+        var prvniSmer = Math.floor(Math.random() * 2);
+        if (prvniSmer == 0) {
+            var tblPosition = 4;
+            show(tblPosition);
+            var tblPosition = 2;
+            show(tblPosition);
+            var resultsArray = [0, 2];
+            console.log(resultsArray, "4");
+            return resultsArray;
+        } else {
+            var treti = Math.floor(Math.random() * 2);
+            if (treti == 0) {
+                var tblPosition = 5;
+                show(tblPosition);
+                var tblPosition = 2;
+                show(tblPosition);
+                var resultsArray = [1, 0]
+                console.log(resultsArray, "5");
+                return resultsArray;
+            } else {
+                var tblPosition = 5;
+                show(tblPosition);
+                var tblPosition = 2;
+                show(tblPosition);
+                var tblPosition = 8;
+                show(tblPosition);
+                var resultsArray = [1, 0, 2];
+                console.log(resultsArray, "6");
+                return resultsArray;
+            }
+        }
+    } else {
+        var prvniSmer = Math.floor(Math.random() * 2);
+        if (prvniSmer == 0) {
+            var treti = Math.floor(Math.random() * 2);
+            if (treti == 0) {
+                var tblPosition = 7;
+                show(tblPosition);
+                var tblPosition = 4;
+                show(tblPosition);
+                var resultsArray = [2, 1];
+                console.log(resultsArray, "7");
+                return resultsArray;
+            }
+            var tblPosition = 7;
+            show(tblPosition);
+            var tblPosition = 2;
+            show(tblPosition);
+            var tblPosition = 4;
+            show(tblPosition);
+            var resultsArray = [2, 1, 0];
+            console.log(resultsArray, "8");
+            return resultsArray;
+        } else {
+            var tblPosition = 8;
+            show(tblPosition);
+            var tblPosition = 4;
+            show(tblPosition);
+            var tblPosition = 2;
+            show(tblPosition);
+            var resultsArray = [2, 1, 0];
+            console.log(resultsArray, "9");
+            return resultsArray;
+        }
+
+
+    }
+}
+
+
 /**
  * Hlavní funkce kterou se pouští generátor pořadí průjezdu
  */
 function nextExercise() {
+
     hide();
+    document.getElementById("nula").style.visibility = "visible";
     base = first();
+    console.log(base, "base");
     base1 = second(base);
+    console.log(base1, "base1");
     base2 = third(base1);
+    console.log(base2, "base2");
     resultsArray = lastOne(base2);
+    console.log(resultsArray);
 }
 
 // Při prvním načtení stránky se spustí nový příklad
-nextExercise()
+//nextExercise()
+//start()
 
 /**
  * funkce první - zde je náhodně vybráno pole z zabulky tableXfree
@@ -298,9 +433,17 @@ function lastOne(base2) {
         var tblPosition = table[z1][tx];
         show(tblPosition);
     }
+
+    if (order.length == 4) {
+        var treti = order[2];
+        order[2] = order[3];
+        order[3] = treti;
+    }
+
     var resultsArray = order;
     console.log(resultsArray);
     return resultsArray;
+
 
 }
 
@@ -332,7 +475,7 @@ function show(tablePosition) {
  * z příkladu předchozího
  */
 function hide() {
-    cars.forEach(function(car) {
+    cars.forEach(function (car) {
         hideCar(car.id);
     })
 }

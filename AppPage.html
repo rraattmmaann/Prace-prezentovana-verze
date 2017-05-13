@@ -15,8 +15,22 @@ zobrazovány. V základu má každý z obrázku v css nastavenou visibility: hid
 pomocí funkce show() je toto podle potřeby měněno na visible. 
 -->
 		<div id="main">
-			<div id="pozadi">
-				<img src="images/XCrossing.jpg" width="1360px" height="760px">
+			<div class="pozadi">
+				<div id="nula">
+					<img src="images/XCrossing.jpg" width="1360px" height="760px">
+				</div>
+				<div id="jedna">
+					<img src="images/XCrossing1.jpg" width="1360px" height="760px">
+				</div>
+				<div id="dva">
+					<img src="images/XCrossing2.jpg" width="1360px" height="760px">
+				</div>
+				<div id="tři">
+					<img src="images/XCrossing3.jpg" width="1360px" height="760px">
+				</div>
+				<div id="čtyři">
+					<img src="images/XCrossing4.jpg" width="1360px" height="760px">
+				</div>
 			</div>
 			<div class="cars">
 				<div class="carA">
@@ -67,53 +81,55 @@ pomocí funkce show() je toto podle potřeby měněno na visible.
 		</div>
 		<!-- tabulka, kde si uživatel může zaškrtnout pořadí, ve kterém si myslí, že budou auta křižovatkou
 projíždět -->
-		<div align="centre">
-			<table class="table">
-				<tr id="first">
-					<th></th>
-					<th>Červené</th>
-					<th>Zelené</th>
-					<th>Modré</th>
-					<th>Růžové</th>
-				</tr>
-				<tr class="odd">
-					<th>První</th>
-					<th><input type="radio" name="1"></th>
-					<th><input type="radio" name="1"></th>
-					<th><input type="radio" name="1"></th>
-					<th><input type="radio" name="1"></th>
-				</tr>
-				<tr class="even">
-					<th>Druhé</th>
-					<th><input type="radio" name="2"></th>
-					<th><input type="radio" name="2"></th>
-					<th><input type="radio" name="2"></th>
-					<th><input type="radio" name="2"></th>
-				</tr>
-				<tr class="odd">
-					<th>Třetí</th>
-					<th><input type="radio" name="3"></th>
-					<th><input type="radio" name="3"></th>
-					<th><input type="radio" name="3"></th>
-					<th><input type="radio" name="3"></th>
-				</tr>
-				<tr class="even">
-					<th>Čtvrté</th>
-					<th><input type="radio" name="4"></th>
-					<th><input type="radio" name="4"></th>
-					<th><input type="radio" name="4"></th>
-					<th><input type="radio" name="4"></th>
-				</tr>
-			</table>
-		</div>
-		<!-- tlačítko pouštějící funkce result() a nextExcercise(), které vypisují pořadí ve kerém
+		<div id="mazani">
+			<div align="centre">
+				<table id="tabulka">
+					<tr id="first">
+						<th></th>
+						<th>Červené</th>
+						<th>Zelené</th>
+						<th>Modré</th>
+						<th>Růžové</th>
+					</tr>
+					<tr class="odd">
+						<th>První</th>
+						<th><input id="blem" type="radio" name="1"></th>
+						<th><input type="radio" name="1"></th>
+						<th><input type="radio" name="1"></th>
+						<th><input type="radio" name="1"></th>
+					</tr>
+					<tr class="even">
+						<th>Druhé</th>
+						<th><input type="radio" name="2"></th>
+						<th><input type="radio" name="2"></th>
+						<th><input type="radio" name="2"></th>
+						<th><input type="radio" name="2"></th>
+					</tr>
+					<tr class="odd">
+						<th>Třetí</th>
+						<th><input type="radio" name="3"></th>
+						<th><input type="radio" name="3"></th>
+						<th><input type="radio" name="3"></th>
+						<th><input type="radio" name="3"></th>
+					</tr>
+					<tr class="even">
+						<th>Čtvrté</th>
+						<th><input type="radio" name="4"></th>
+						<th><input type="radio" name="4"></th>
+						<th><input type="radio" name="4"></th>
+						<th><input type="radio" name="4"></th>
+					</tr>
+				</table>
+			</div>
+			<!-- tlačítko pouštějící funkce result() a nextExcercise(), které vypisují pořadí ve kerém
 projíždějí auta křižovatkou (jejich barvy), respektive pouštějí celý skript znova - pro 
 vygenerování nové situace -->
-		<div id="result"><button id="button" onclick="result()">Zobrazit řešení</button>
-			<span id="solution_text"></span>
-			<div id="next-exercise"><button id="button" onclick="nextExercise()">Další příklad</button></div>
+			<div id="result"><button id="button" onclick="result()">Zobrazit řešení</button>
+				<span id="solution_text"></span>
+				
+			</div>
+			<div id="next-exercise"><button id="button" onclick="start()">Další příklad</button></div>
 		</div>
-
 		<script src="src/index.js" type="text/javascript"></script>
 </body>
 

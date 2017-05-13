@@ -36,93 +36,55 @@ body {
 	margin-left: 3em;
 	padding-bottom: 1em;
 }
-#pozadi{
+.main{
+	position: relative;
+}
+.pozadi{
 	position: relative;
     width: 1360px;
     height: 760px;
     background: blue;
 }
+#nula, #jedna, #dva, #tři, #čtyři{
+	visibility : hidden;
+	position: absolute;
+	top : 0px;
+}
 
-#A0{
+
+#A0, #A1, #A2{
 	position: absolute;
 	left: 680px;
-    bottom: -143px;
+	top: 371px;
 	visibility: hidden;
 }
 
-#A1{
+#B0, #B1, #B2{
 	position: absolute;
-	left: 680px;
-    bottom: -143px;
+	left: 866px;
+    top: 71px;
 	visibility: hidden;
 }
 
-#A2{
+#C0, #C1, #C2{
 	position: absolute;
-	left: 680px;
-    bottom: -143px;
+	left: 390px;
+    top: 0px;
 	visibility: hidden;
 }
 
-#B0{
-	position: absolute;
-	left: 866px;
-    bottom: 242px;
-	visibility: hidden;
-}
-#B1{
-	position: absolute;
-	left: 866px;
-    bottom: 242px;
-	visibility: hidden;
-}
-#B2{
-	position: absolute;
-	left: 866px;
-    bottom: 242px;
-	visibility: hidden;
-}
-#C0{
-	position: absolute;
-	left: 390px;
-    bottom: 356px;
-	visibility: hidden;
-}
-#C1{
-	position: absolute;
-	left: 390px;
-    bottom: 356px;
-	visibility: hidden;
-}
-#C2{
-	position: absolute;
-	left: 390px;
-    bottom: 356px;
-	visibility: hidden;
-}
-#D0{
+#D0, #D1, #D2{
 	position: absolute;
 	left: 100px;
-    bottom: 126px;
+    top: 261px;
 	visibility: hidden;
 }
-#D1{
-	position: absolute;
-	left: 100px;
-    bottom: 126px;
-	visibility: hidden;
-}
-#D2{
-	position: absolute;
-	left: 100px;
-    bottom: 126px;
-	visibility: hidden;
-}
+
 .main{
 	background-color: #00ff00; 
 }
 
-.table{
+#tabulka{
 	border-collapse: collapse;	
 }
 
