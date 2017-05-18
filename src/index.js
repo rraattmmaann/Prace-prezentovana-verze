@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * základní tabulka popisující přednosti mezi vozidly
  */
 var tableXfree = [
@@ -45,20 +44,19 @@ var base1;
 var base2;
 var resultsArray;
 
-//var typkrizovatky = 0;
-console.log("0");
-
 function start() {
+    clearResultAndTable();
+
     var typkrizovatky = Math.floor(Math.random() * 2);
     if (typkrizovatky == 0) {
+        console.log('TYPE 3-ROUTES');
 
-        console.log("a taky tudy!!!!!!!!!!!!!");
         hide();
         Tkrizovatka1();
         document.getElementById("nula").style.visibility = "hidden";
     } else {
+        console.log('TYPE 4-ROUTES');
 
-        console.log("kurva vole normální křižovatka už");
         document.getElementById("dva").style.visibility = "hidden";
         document.getElementById("nula").style.visibility = "visible";
         nextExercise();
@@ -79,28 +77,28 @@ function Tkrizovatka1() {
                 show(tblPosition);
                 var tblPosition = 1;
                 show(tblPosition);
-                var tblPosition = 8;                      
+                var tblPosition = 8;
                 show(tblPosition);
-                var resultsArray = [0, 2, 1];
+                resultsArray = [0, 2, 1];
                 console.log(resultsArray, "1");
-                return resultsArray;
+                return;
             } else {
                 var tblPosition = 1;
                 show(tblPosition);
-                var tblPosition = 8;                        //již vyzkoušena devítka
+                var tblPosition = 8;                        //již vyzkoušena 9
                 show(tblPosition);
-                var resultsArray = [0, 2];
+                resultsArray = [0, 2];
                 console.log(resultsArray, "2");
-                return resultsArray;
+                return;
             }
         } else {
             var tblPosition = 2;
             show(tblPosition);
             var tblPosition = 8;
             show(tblPosition);
-            var resultsArray = [0, 2];
+            resultsArray = [0, 2];
             console.log(resultsArray, "3");
-            return resultsArray;
+            return;
         }
     } else if (prvni == 1) {
         var prvniSmer = Math.floor(Math.random() * 2);
@@ -109,9 +107,9 @@ function Tkrizovatka1() {
             show(tblPosition);
             var tblPosition = 2;
             show(tblPosition);
-            var resultsArray = [0, 2];
+            resultsArray = [0, 2];
             console.log(resultsArray, "4");
-            return resultsArray;
+            return;
         } else {
             var treti = Math.floor(Math.random() * 2);
             if (treti == 0) {
@@ -119,9 +117,9 @@ function Tkrizovatka1() {
                 show(tblPosition);
                 var tblPosition = 2;
                 show(tblPosition);
-                var resultsArray = [1, 0]
+                resultsArray = [1, 0]
                 console.log(resultsArray, "5");
-                return resultsArray;
+                return;
             } else {
                 var tblPosition = 5;
                 show(tblPosition);
@@ -129,9 +127,9 @@ function Tkrizovatka1() {
                 show(tblPosition);
                 var tblPosition = 8;
                 show(tblPosition);
-                var resultsArray = [1, 0, 2];
+                resultsArray = [1, 0, 2];
                 console.log(resultsArray, "6");
-                return resultsArray;
+                return;
             }
         }
     } else {
@@ -143,9 +141,9 @@ function Tkrizovatka1() {
                 show(tblPosition);
                 var tblPosition = 4;
                 show(tblPosition);
-                var resultsArray = [2, 1];
+                resultsArray = [2, 1];
                 console.log(resultsArray, "7");
-                return resultsArray;
+                return;
             }
             var tblPosition = 7;
             show(tblPosition);
@@ -153,9 +151,9 @@ function Tkrizovatka1() {
             show(tblPosition);
             var tblPosition = 4;
             show(tblPosition);
-            var resultsArray = [2, 1, 0];
+            resultsArray = [2, 1, 0];
             console.log(resultsArray, "8");
-            return resultsArray;
+            return;
         } else {
             var tblPosition = 8;
             show(tblPosition);
@@ -163,9 +161,9 @@ function Tkrizovatka1() {
             show(tblPosition);
             var tblPosition = 2;
             show(tblPosition);
-            var resultsArray = [2, 1, 0];
+            resultsArray = [2, 1, 0];
             console.log(resultsArray, "9");
-            return resultsArray;
+            return;
         }
 
 
@@ -192,7 +190,7 @@ function nextExercise() {
 
 // Při prvním načtení stránky se spustí nový příklad
 //nextExercise()
-//start()
+start()
 
 /**
  * funkce první - zde je náhodně vybráno pole z zabulky tableXfree
@@ -501,4 +499,16 @@ function result() {
     var colorNumbers = resultsArray;
     //vypisuje do html
     solutionText.innerHTML = 'Řešení: ' + colorNumbers.map(getColorNameByNumber);
+}
+
+/**
+ * funkce mazající poslední řešení
+ */
+function clearResultAndTable() {
+    var solutionText = document.getElementById('solution_text');
+    solutionText.innerHTML = '';
+    
+    for(input of document.getElementsByTagName('input')) {
+        input.checked = false
+    }
 }
